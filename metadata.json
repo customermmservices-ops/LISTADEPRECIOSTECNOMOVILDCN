@@ -1,0 +1,6 @@
+{
+  "name": "TECNOMOVIL DCN",
+  "description": "Tienda Oficial Movistar del CC Parque los Aviadores - Venta de equipos móviles y servicio técnico profesional.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

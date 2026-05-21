@@ -1,0 +1,11 @@
+Marca,Modelo,Segmento,Precio,Estado,ImagenURL
+Apple,iPhone 15 Pro Max,Premium,1299,Disponible,https://images.unsplash.com/photo-1695048133142-1a20484d2569?q=80&w=600&auto=format&fit=crop
+Samsung,Galaxy S24 Ultra,Premium,1199,Disponible,https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?q=80&w=600&auto=format&fit=crop
+Xiaomi,Xiaomi 14 Ultra,Premium,1099,Disponible,https://images.unsplash.com/photo-1598327105666-5b89351aff97?q=80&w=600&auto=format&fit=crop
+Apple,iPhone 15,Premium,799,Disponible,https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?q=80&w=600&auto=format&fit=crop
+Samsung,Galaxy A55,Alta Rotación,399,Disponible,https://images.unsplash.com/photo-1565630916779-e303be97b6f5?q=80&w=600&auto=format&fit=crop
+Xiaomi,Redmi Note 13 Pro,Alta Rotación,299,Disponible,https://images.unsplash.com/photo-1523206489230-c012cdd4b2b4?q=80&w=600&auto=format&fit=crop
+Motorola,Edge 50 Fusion,Alta Rotación,349,Disponible,https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=600&auto=format&fit=crop
+Tecno,Spark 20 Pro,Alta Rotación,169,Disponible,https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=600&auto=format&fit=crop
+Infinix,Hot 40 Pro,Alta Rotación,159,No Disponible,https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=600&auto=format&fit=crop
+Realme,Realme 12 Pro+,Alta Rotación,429,Disponible,https://images.unsplash.com/photo-1598327105666-5b89351aff97?q=80&w=600&auto=format&fit=crop
