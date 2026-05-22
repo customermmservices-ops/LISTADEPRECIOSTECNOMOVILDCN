@@ -49,6 +49,15 @@ export default function App() {
   const [selectedBrandFilter, setSelectedBrandFilter] = useState<string>("Todos");
   const [searchQuery, setSearchQuery] = useState<string>("");
 
+  const productListRef = useRef<HTMLDivElement>(null);
+
+  const handleBrandFilterChange = (brand: string) => {
+    setSelectedBrandFilter(brand);
+    setTimeout(() => {
+      productListRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 50);
+  };
+
   // Clean and parse the CSV string robustly
   const parseCSV = (csvText: string): Product[] => {
     const lines = csvText.split(/\r?\n/);
@@ -251,27 +260,28 @@ export default function App() {
     <div className="min-h-screen bg-[#FCFCFD] text-[#1e293b] font-sans antialiased relative selection:bg-blue-100 selection:text-blue-900">
       
       {/* 1. STICKY NAV HEADER */}
-      <header className="sticky top-0 z-40 bg-[#FCFCFD]/90 backdrop-blur-md border-b border-gray-100/80 transition-shadow">
-        <div className="max-w-6xl mx-auto px-4 py-3.5 flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-2xl bg-blue-600 flex items-center justify-center text-white shadow-xs">
-              <Smartphone className="w-5 h-5" />
-            </div>
-            <div>
-              <div className="flex items-center space-x-2">
-                <h1 className="text-base font-bold font-display tracking-tight text-slate-950 uppercase">
-                  TECNOMOVIL DCN
-                </h1>
-                <span className="text-[10px] bg-sky-50 text-sky-700 font-bold px-1.5 py-0.5 rounded border border-sky-150 uppercase tracking-widest leading-none">
-                  Movistar
-                </span>
-              </div>
-              <p className="text-xs text-slate-400">Tienda Oficial Movistar</p>
+      <header className="flex flex-row justify-between items-center w-full px-4 py-3 bg-white border-b border-gray-100 sticky top-0 z-50">
+        <div className="max-w-6xl mx-auto w-full flex items-center justify-between relative">
+          
+          {/* Bloque de Identidad (Izquierda) */}
+          <div className="flex flex-row items-center gap-3">
+            <img 
+              src="https://i.ibb.co/SDBtMZPH/Logo-tecnomovil-dcn-1.png" 
+              alt="TECNOMOVIL DCN" 
+              className="h-10 sm:h-12 w-auto object-contain shrink-0"
+              width={160}
+              height={100}
+              referrerPolicy="no-referrer"
+            />
+            <div className="flex flex-col justify-center">
+              <h1 className="text-lg sm:text-xl font-black text-gray-900 leading-none tracking-tighter">CATÁLOGO DIGITAL</h1>
+              <h2 className="text-sm sm:text-base font-medium text-blue-600 leading-snug mt-0.5">Tienda Oficial Movistar</h2>
+              <p className="text-[10px] sm:text-[11px] font-semibold text-gray-500 uppercase tracking-widest leading-none mt-1">Parque Los Aviadores • PASILLO CINE</p>
             </div>
           </div>
 
           {/* Contact Details and Cart Button on Header right */}
-          <div className="flex items-center space-x-3">
+          <div className="ml-auto sm:ml-0 flex items-center space-x-3 z-10 shrink-0">
             <div className="hidden md:flex flex-col text-right pr-3 border-r border-gray-100">
               <span className="text-[11px] font-mono text-slate-400">CC Parque los Aviadores</span>
               <span className="text-xs font-semibold text-slate-700">Telf: 0243-2019563</span>
@@ -296,46 +306,6 @@ export default function App() {
           </div>
         </div>
       </header>
-
-      {/* 2. HERO DESCRIPTION AND STORE INFO PANEL */}
-      <section className="bg-slate-50 border-b border-gray-100 py-6">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="max-w-3xl">
-            <h2 className="text-2xl sm:text-3xl font-bold font-display text-slate-900 tracking-tight">
-              Explora Nuestro Catálogo Digital
-            </h2>
-            <p className="mt-1.5 text-xs sm:text-sm text-slate-500 leading-relaxed">
-              Tienda Oficial Movistar ubicada en el <strong className="text-slate-700">CC Parque los Aviadores, Maracay (Telf: 0243-2019563)</strong>. 
-              Selecciona los modelos de tu interés en la lista inferior y consulta su disponibilidad oficial 100% en vivo a nuestro equipo a través de un mensaje unificado de WhatsApp.
-            </p>
-          </div>
-
-          {/* Quick info badges */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 mt-6">
-            <div className="bg-white p-4 rounded-2xl border border-gray-100 flex items-start space-x-3.5 md:col-span-5">
-              <div className="p-2 bg-blue-50 text-blue-600 rounded-xl shrink-0">
-                <MapPin className="w-4 h-4" />
-              </div>
-              <div>
-                <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Ubicación Física</h4>
-                <p className="text-xs font-semibold text-slate-700 mt-0.5 leading-tight">CC Parque los Aviadores, Pasillo Cine, Local L-228. Maracay Venezuela.</p>
-              </div>
-            </div>
-
-            <div className="bg-white p-4 rounded-2xl border border-gray-100 flex items-start space-x-3.5 md:col-span-7">
-              <div className="p-2 bg-emerald-50 text-emerald-600 rounded-xl shrink-0">
-                <Phone className="w-4 h-4" />
-              </div>
-              <div>
-                <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Contacto Oficial</h4>
-                <p className="text-xs font-semibold text-slate-700 mt-0.5 leading-tight">
-                  Tienda (0243-2019563), Whatsapp Clientes (0424-3116333), Whatsapp Empresas (0414-4273500)
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* 3. CORE CATALOG CONTAINER */}
       <main className="max-w-6xl mx-auto px-4 py-8 pb-32">
@@ -398,15 +368,17 @@ export default function App() {
                   return (
                     <button
                       key={brand}
-                      onClick={() => setSelectedBrandFilter(brand)}
-                      className={`px-3.5 py-1.5 rounded-lg text-xs font-medium cursor-pointer transition-all whitespace-nowrap flex items-center gap-1.5 ${
+                      onClick={() => handleBrandFilterChange(brand)}
+                      className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold cursor-pointer transition-all whitespace-nowrap flex items-center gap-1.5 border ${
                         isSelected
-                          ? "bg-blue-600 text-white shadow-xs"
-                          : "bg-slate-100 hover:bg-slate-200 text-slate-650"
+                          ? "bg-blue-600 border-blue-600 text-white shadow-xs"
+                          : brand === "Todos"
+                            ? "bg-white border-blue-300 text-blue-600 hover:bg-blue-50/70 shadow-xs"
+                            : "bg-slate-100 border-slate-100 hover:bg-slate-200 text-slate-650"
                       }`}
                     >
                       <span>{brand}</span>
-                      <span className={`text-[10px] px-1 py-0.2 rounded-md ${isSelected ? "bg-white/20 text-white" : "bg-white text-slate-500"}`}>
+                      <span className={`text-[10px] px-1 py-0.2 rounded-md ${isSelected ? "bg-white/20 text-white" : "bg-blue-50 text-blue-600"}`}>
                         {matchCount}
                       </span>
                     </button>
@@ -444,6 +416,9 @@ export default function App() {
               </button>
             </div>
           )}
+
+          {/* Anchor element for brand filter scroll effect */}
+          <div ref={productListRef} className="scroll-mt-24" />
 
           {/* 5. SUCCESS CATÁLOGO (LISTA DE PRECIOS ESPACIADA, SIN IMÁGENES) */}
           {!loading && !errorString && filteredProducts.length === 0 && (
@@ -671,29 +646,52 @@ export default function App() {
           </motion.div>
         )}
       </AnimatePresence>
-      
+
       {/* FOOTER */}
-      <footer className="bg-slate-900 text-slate-400 py-12 border-t border-slate-850">
-        <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <div className="space-y-2">
-            <div className="flex items-center space-x-2">
-              <span className="text-white font-bold font-display tracking-tight text-base uppercase">
-                TECNOMOVIL DCN
-              </span>
-              <span className="bg-sky-500/10 text-sky-400 text-[10px] font-bold px-1.5 py-0.5 rounded uppercase tracking-widest leading-none">
-                Movistar
-              </span>
-            </div>
-            <p className="text-xs text-slate-450 leading-relaxed">
-              Tienda Oficial Movistar. CC Parque los Aviadores, Maracay, Aragua.<br />
-              Venta de smartphones autorizados, accesorios premium y servicio de recarga oficial.
-            </p>
+      <footer className="bg-gray-50 border-t border-gray-100 py-12 mt-12 text-center text-sm text-gray-500">
+        <div className="max-w-4xl mx-auto px-4 text-center space-y-6">
+          {/* El Logotipo en el Footer */}
+          <div className="flex justify-center min-h-[56px] sm:min-h-[64px]">
+            <img 
+              src="https://i.ibb.co/SDBtMZPH/Logo-tecnomovil-dcn-1.png" 
+              alt="TECNOMOVIL DCN" 
+              className="h-14 sm:h-16 w-auto mx-auto object-contain mb-4"
+              width={160}
+              height={100}
+              referrerPolicy="no-referrer"
+            />
           </div>
-          
-          <div className="flex flex-col md:items-end text-xs space-y-1.5">
-            <span className="text-slate-300 font-semibold">Telf: 0243-2019563 &bull; CC Parque los Aviadores</span>
-            <p className="text-[11px] text-slate-500">
-              Esta lista de precios recupera información en tiempo real directamente de la base de datos de Google Sheets del sistema de inventarios oficiales.
+
+          {/* Textos del Footer */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+            {/* Ubicación Física */}
+            <div className="bg-white border border-gray-100 p-5 rounded-2xl flex flex-col items-center text-center space-y-2 shadow-2xs">
+              <div className="p-2 bg-blue-50 text-blue-600 rounded-xl shrink-0">
+                <MapPin className="w-5 h-5" />
+              </div>
+              <h4 className="text-xs font-bold text-gray-700 uppercase tracking-wider">Ubicación Física</h4>
+              <p className="text-xs sm:text-sm text-gray-500 leading-relaxed max-w-sm">
+                CC Parque los Aviadores, Pasillo Cine, Local L-228. Maracay, Aragua.
+              </p>
+            </div>
+
+            {/* Contacto Oficial */}
+            <div className="bg-white border border-gray-100 p-5 rounded-2xl flex flex-col items-center text-center space-y-2 shadow-2xs">
+              <div className="p-2 bg-emerald-50 text-emerald-600 rounded-xl shrink-0">
+                <Phone className="w-5 h-5" />
+              </div>
+              <h4 className="text-xs font-bold text-gray-700 uppercase tracking-wider">Contacto Oficial</h4>
+              <div className="text-xs sm:text-sm text-gray-500 leading-relaxed space-y-1">
+                <p><span className="font-semibold text-gray-700">Tienda:</span> 0243-2019563</p>
+                <p><span className="font-semibold text-gray-700">WhatsApp Clientes:</span> 0424-3116333</p>
+                <p><span className="font-semibold text-gray-700">WhatsApp Empresas:</span> 0414-4273500</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="pt-6 border-t border-gray-200/60">
+            <p className="text-[11px] text-gray-400 font-mono leading-relaxed">
+              Este sistema interactivo recupera información oficial en tiempo real directamente del sistema de inventarios en Google Sheets de TECNOMOVIL DCN.
             </p>
           </div>
         </div>
