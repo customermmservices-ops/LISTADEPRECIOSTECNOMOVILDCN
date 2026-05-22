@@ -23,6 +23,7 @@ import {
   X,
   Sparkles
 } from "lucide-react";
+import { Analytics } from "@vercel/analytics/react";
 
 interface Product {
   marca: string;
@@ -699,6 +700,7 @@ export default function App() {
         </div>
       </footer>
 
+      <Analytics />
     </div>
   );
 }
