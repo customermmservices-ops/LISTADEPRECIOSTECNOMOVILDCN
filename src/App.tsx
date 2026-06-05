@@ -266,7 +266,7 @@ export default function App() {
           {/* Bloque de Identidad (Izquierda) */}
           <div className="flex flex-row items-center gap-3">
             <img 
-              src="https://cdn.jsdelivr.net/gh/customermmservices-ops/LISTADEPRECIOSTECNOMOVILDCN@main/public/logo.png" 
+              src="https://listadepreciostecnomovildcn.vercel.app/logo.png" 
               alt="TECNOMOVIL DCN" 
               className="h-10 sm:h-12 w-auto object-contain shrink-0"
               width={160}
@@ -653,7 +653,7 @@ export default function App() {
           {/* El Logotipo en el Footer */}
           <div className="flex justify-center min-h-[56px] sm:min-h-[64px]">
             <img 
-              src="https://cdn.jsdelivr.net/gh/customermmservices-ops/LISTADEPRECIOSTECNOMOVILDCN@main/public/logo.png" 
+              src="https://listadepreciostecnomovildcn.vercel.app/logo.png" 
               alt="TECNOMOVIL DCN" 
               className="h-14 sm:h-16 w-auto mx-auto object-contain mb-4"
               width={160}
