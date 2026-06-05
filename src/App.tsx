@@ -190,7 +190,11 @@ export default function App() {
   );
 
   // Extract dynamic unique list of brands from actual available inventory
-  const brandsList: string[] = ["Todos", ...Array.from<string>(new Set<string>(availableProducts.map((p) => p.marca)))];
+  const brandsList: string[] = [
+    "Todos",
+    ...Array.from<string>(new Set<string>(availableProducts.map((p) => p.marca)))
+      .sort((a, b) => a.localeCompare(b))
+  ];
 
   // Helper filter logic
   const filteredProducts = availableProducts.filter((p) => {
@@ -266,7 +270,7 @@ export default function App() {
           {/* Bloque de Identidad (Izquierda) */}
           <div className="flex flex-row items-center gap-3">
             <img 
-              src="https://cdn.jsdelivr.net/gh/customermmservices-ops/LISTADEPRECIOSTECNOMOVILDCN@main/public/logo.png?v=2" 
+              src="https://raw.githubusercontent.com/customermmservices-ops/LISTADEPRECIOSTECNOMOVILDCN/main/public/logo.png" 
               alt="TECNOMOVIL DCN" 
               className="h-10 sm:h-12 w-auto object-contain shrink-0"
               width={160}
@@ -653,7 +657,7 @@ export default function App() {
           {/* El Logotipo en el Footer */}
           <div className="flex justify-center min-h-[56px] sm:min-h-[64px]">
             <img 
-              src="https://cdn.jsdelivr.net/gh/customermmservices-ops/LISTADEPRECIOSTECNOMOVILDCN@main/public/logo.png?v=2" 
+              src="https://raw.githubusercontent.com/customermmservices-ops/LISTADEPRECIOSTECNOMOVILDCN/main/public/logo.png" 
               alt="TECNOMOVIL DCN" 
               className="h-14 sm:h-16 w-auto mx-auto object-contain mb-4"
               width={160}
